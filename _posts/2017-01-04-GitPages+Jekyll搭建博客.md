@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title:  "使用Github Page和Jekyll搭建博客站点"
 date:   2017-01-04 19:34:32 +0800
 categories: 个人
