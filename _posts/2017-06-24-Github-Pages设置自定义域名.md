@@ -1,11 +1,13 @@
 ---
 layout: single
 title:  "Github Pages配置自定义域名"
-date:   2017-06-26 19:34:32 +0800
-categories: 个人 Github
+date:   2017-06-24 19:34:32 +0800
+categories: Github
 ---
 使用github pages的时候，我们访问的域名一般是：`用户名.github.io`.不过，我们有时候希望显示自己的个性域名，例如我的`lstec.org`.
-##步骤
+
+## 步骤
+
 ### 1. 在Github Pages中设置自定义域名
 有两种方式可以做到这个：
 
