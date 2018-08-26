@@ -13,7 +13,7 @@ before_script:
 - cat _config.yml
 - echo ${__GITHUB_TOKEN__}
 - echo ${GITHUB_TOKEN}
-- sed -i "s/__GITHUB_TOKEN__/${__GITHUB_TOKEN__}/" _config.yml
+- sed -i "s/__GITHUB_TOKEN__/${GITHUB_TOKEN}/" _config.yml
 - cat _config.yml
 
 script: npm run build
