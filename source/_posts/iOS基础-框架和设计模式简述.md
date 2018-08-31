@@ -17,3 +17,6 @@ tags:
 ![iOS Frameworks简述](https://raw.githubusercontent.com/x13945/image-bucket/master/img/%E9%87%87%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%BD%BF%E6%82%A8%E7%9A%84%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%90%88%E7%90%86%E5%8C%96%20.png)
 **设计模式**
 ![iOS设计模式简述](https://raw.githubusercontent.com/x13945/image-bucket/master/img/%E9%87%87%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%BD%BF%E6%82%A8%E7%9A%84%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%90%88%E7%90%86%E5%8C%96%20.png)
+
+*参考:*
+[马上着手开发 iOS 应用程序：介绍](https://developer.apple.com/library/archive/referencelibrary/GettingStarted/RoadMapiOSCh-Legacy/chapters/Introduction.html)
