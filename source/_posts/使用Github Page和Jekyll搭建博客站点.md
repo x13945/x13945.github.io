@@ -8,6 +8,8 @@ tags:
   - Jekyll
 ---
 
+<!-- toc -->
+
 ## 1.去 github 开通 GitHub Pages
 
 [这里](https://pages.github.com/)
