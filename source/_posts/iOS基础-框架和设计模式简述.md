@@ -8,7 +8,7 @@ tags:
   - iOS
   - Frameworks
   - Design Patterns
-  - 设计模式
+  - 设计模式
 ---
 
 这两天看iOS基础的时候，整理了一些东西，画了两张关于iOS上Frameworks和设计模式的图：
