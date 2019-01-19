@@ -1,6 +1,9 @@
 ---
 title: Android+Gradle+Jenkins持续集成
 tags:
+  - Android
+  - Gradle
+  - Jenkins
 ---
 
 ## 1.准备工作
