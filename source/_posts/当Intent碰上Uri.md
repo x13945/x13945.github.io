@@ -78,8 +78,6 @@ sendBroadcast(Intent("com.test.ACTION_RECEIVER").apply {
 首先，在`AndroidManifest`中注册我们的`Activity`及其`intent-filter`:
 
 ```xml
-
-
 <activity
     android:exported="true"
     android:name=".EmptyActivity">
@@ -108,7 +106,6 @@ startActivity(Intent("com.test.ACTION_ACTIVITY").apply {
 众所周知，`BroadcastReceiver`的分发也是由`framework`中的`AMS`来处理的，就是它：`frameworks/base/services/core/java/com/android/server/am/ActivityManagerService.java`。经过一番调查之后，发现`AMS`收到一个`BroadcastReceiver`请求的时候，会通过它的成员变量`mReceiverResolver`来查找哪些`BroadcastReceiver`可以处理这个`Intent`。
 
 ```java
-
     /**
      * Resolver for broadcast intents to registered receivers.
      * Holds BroadcastFilter (subclass of IntentFilter).
@@ -119,7 +116,6 @@ startActivity(Intent("com.test.ACTION_ACTIVITY").apply {
         被忽略的其他代码
         ......
     }
-
 ```
 
 下面我们就要分析这个`mReceiverResolver`是如何工作的。
@@ -136,53 +132,51 @@ startActivity(Intent("com.test.ACTION_ACTIVITY").apply {
 经过我的梳理，这个方法的工作流程大致如下：
 
 ```java
+public List<R> queryIntent(Intent intent, String resolvedType, boolean defaultOnly,
+        int userId) {
+    // Uri中的scheme，如Uri是https://google.com，那么scheme就是https
+    String scheme = intent.getScheme();
+    ArrayList<R> finalList = new ArrayList<R>();
 
-    public List<R> queryIntent(Intent intent, String resolvedType, boolean defaultOnly,
-            int userId) {
-        // Uri中的scheme，如Uri是https://google.com，那么scheme就是https
-        String scheme = intent.getScheme();
-        ArrayList<R> finalList = new ArrayList<R>();
+    F[] firstTypeCut = null;
 
-        F[] firstTypeCut = null;
-
-        // If the intent includes a MIME type, then we want to collect all of
-        // the filters that match that MIME type.
-        if (resolvedType != null) {
-          // 由于 resolvedType 是空的，所以这里不执行
-        }
-
-        // If the intent includes a data URI, then we want to collect all of
-        // the filters that match its scheme (we will further refine matches
-        // on the authority and path by directly matching each resulting filter).
-        if (scheme != null) {
-            schemeCut = mSchemeToFilter.get(scheme);
-        }
-
-        // If the intent does not specify any data -- either a MIME type or
-        // a URI -- then we will only be looking for matches against empty
-        // data.
-        if (resolvedType == null && scheme == null && intent.getAction() != null) {
-          // 由于 scheme 不为空，所以这里不执行
-            firstTypeCut = mActionToFilter.get(intent.getAction());
-        }
-
-        FastImmutableArraySet<String> categories = getFastIntentCategories(intent);
-        if (firstTypeCut != null) {
-          // 由于 firstTypeCut 为null，所以这里不执行
-            buildResolveList(intent, categories, debug, defaultOnly, resolvedType,
-                    scheme, firstTypeCut, finalList, userId);
-        }
-
-        return finalList;
+    // If the intent includes a MIME type, then we want to collect all of
+    // the filters that match that MIME type.
+    if (resolvedType != null) {
+      // 由于 resolvedType 是空的，所以这里不执行
     }
 
+    // If the intent includes a data URI, then we want to collect all of
+    // the filters that match its scheme (we will further refine matches
+    // on the authority and path by directly matching each resulting filter).
+    if (scheme != null) {
+        schemeCut = mSchemeToFilter.get(scheme);
+    }
+
+    // If the intent does not specify any data -- either a MIME type or
+    // a URI -- then we will only be looking for matches against empty
+    // data.
+    if (resolvedType == null && scheme == null && intent.getAction() != null) {
+      // 由于 scheme 不为空，所以这里不执行
+        firstTypeCut = mActionToFilter.get(intent.getAction());
+    }
+
+    FastImmutableArraySet<String> categories = getFastIntentCategories(intent);
+    if (firstTypeCut != null) {
+      // 由于 firstTypeCut 为null，所以这里不执行
+        buildResolveList(intent, categories, debug, defaultOnly, resolvedType,
+                scheme, firstTypeCut, finalList, userId);
+    }
+
+    return finalList;
+}
 ```
 
 由此可见，当`Intent`中既有`Action`，又有`Uri`的时候，`Action`就会被忽略。
 
 # 总结
 
-当我们使用的`Intent`去隐式启动`BroadcastReceiver`或者 `Activity`，如果`Intent`里既有`Action`，又有`Uri`。我们需要在组件的`intent-filter`显式声明我们能够捕获该`Uri`的`scheme`。类似"https://m.lstec.org"的uri，需要在`AndroidManifest.xml` 中用如下的方式声明：
+当我们使用的`Intent`去隐式启动`BroadcastReceiver`或者 `Activity`，如果`Intent`里既有`Action`，又有`Uri`。我们需要在组件的`intent-filter`显式声明我们能够捕获该`Uri`的`scheme`。类似`https://m.lstec.org`的uri，需要在`AndroidManifest.xml` 中用如下的方式声明：
 
 ```xml
 <intent-filter>
@@ -191,6 +185,3 @@ startActivity(Intent("com.test.ACTION_ACTIVITY").apply {
     <data android:scheme="wmpfos" />
 </intent-filter>
 ```
-
-
-
