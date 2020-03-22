@@ -49,3 +49,19 @@ hexo new draft 文章标题
 ```shell
 hexo new 文章标题
 ```
+
+# FAQ
+
+1. 使用hexo命令碰到如下的异常应该怎么办：
+
+   ```shell
+   command not found: hexo
+   ```
+
+   解决办法：通过下面的命令安装`hexo`
+
+   ```shell
+   npm install hexo-cli -g
+   ```
+
+   
