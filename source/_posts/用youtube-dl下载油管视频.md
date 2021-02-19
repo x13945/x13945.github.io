@@ -9,11 +9,11 @@ tags:
   - youtube-dl
 ---
 
-### 简介
+## 简介
 
 youtube-dl 是一个用python开发的命令行工具，可以用来下载油管上的视频
 
-### 使用
+## 使用
 
 ### 1. 选择视频格式和分辨率
 
@@ -44,5 +44,17 @@ format code  extension  resolution note
 
 ```bash
 youtube-dl -f 137 https://www.youtube.com/playlist\?list\=PL54herq3DAICshHvaJlpZ6QOvvC4_JP2m
+```
+
+## 技巧
+
+### 1. 文件重命名
+
+youtube-dl 可以对下载的文件重命名。规则遵循Python的[字符串格式化规则](https://docs.python.org/2/library/stdtypes.html#string-formatting)，其中可以使用的变量可以参见youtube-dl的文档：[youtube-dl/README.md at master · ytdl-org/youtube-dl · GitHub](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#output-template)。
+
+例如：
+
+```bash
+youtube-dl -o '%(playlist_index)s.%(ext)s' -f 137 https://www.youtube.com/playlist\?list\=PL54herq3DAICshHvaJlpZ6QOvvC4_JP2m
 ```
 
