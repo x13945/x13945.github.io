@@ -11,7 +11,9 @@ tags:
 
 ## 简介
 
-youtube-dl 是一个用python开发的命令行工具，可以用来下载油管上的视频
+youtube-dl 是一个用python开发的命令行工具，可以用来下载油管上的视频。
+
+<!-- more -->
 
 ## 使用
 

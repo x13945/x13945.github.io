@@ -8,9 +8,12 @@ tags:
   - macOS 10.15 beta
   - macOS Catalina
 ---
+
 ![](https://raw.githubusercontent.com/x13945/image-bucket/master/img/jamie-street-hBzrr6m6-pc-unsplash.jpg)
 
 又到了今年的七(hua)夕(qian)之夜，先祝大家节日快乐。**：）**
+
+<!-- more -->
 
 最近呀，有些使用**Mac**开发`Android`的小伙伴会发现如下现象：升级`macOS Catalina 10.15beta`版本后，你的`Android Studio`既无法打开现有工程，也没办法导入工程到`Android Studio`了。这个问题在`Android Studio 3.5 RC 2`和`Android Studio 3.4.`版本中均是**百分百**出现。
 

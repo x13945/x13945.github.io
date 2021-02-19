@@ -12,6 +12,8 @@ tags:
 
 使用 github pages 的时候，我们访问的域名一般是：`用户名.github.io`.不过，我们有时候希望显示自己的个性域名，例如我的`lstec.org`.
 
+<!-- more -->
+
 ## 步骤
 
 ### 1. 在 Github Pages 中设置自定义域名

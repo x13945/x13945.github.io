@@ -13,6 +13,8 @@ tags:
 _源自 unsplash.com_
 [原文地址:**React vs. Vue.js 2.0, which one wins?**](https://www.quora.com/React-vs-Vue-js-2-0-which-one-wins/answers/152114765)
 
+<!-- more -->
+
 ## 先说什么是 React.js 和 Vue.js
 
 ### React.js

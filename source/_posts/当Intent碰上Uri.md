@@ -15,6 +15,8 @@ tags:
 
 最近的工作中，涉及到在`Android`的`BroadcastReceiver`的使用，这本是`Android`开发中常见的场景。但是当我用来**隐式启动**`BroadcastReceiver`的`Intent`中通过`setData`方法携带了一个`Uri`的时候，`BroadcastReceiver`却无法被`Intent`唤醒了。
 
+<!-- more -->
+
 ```java
 /**
  * Set the data this intent is operating on.  This method automatically
@@ -50,7 +52,7 @@ public @NonNull Intent setData(@Nullable Uri data) {
 
 发现了问题，当然要解决呀，下面是经过复盘后精简出的两个可以验证失效的最小场景：
 
-## BroadcastReceiver的隐式启动
+## BroadcastReceiver 的隐式启动
 
 首先，在`AndroidManifest`中注册我们的`BroadcastReceiver`及其`intent-filter`:
 
@@ -63,6 +65,7 @@ public @NonNull Intent setData(@Nullable Uri data) {
     </intent-filter>
 </receiver>
 ```
+
 然后，在`Kotlin`中尝试用如下的代码来启动`EmptyReceiver`:
 
 ```kotlin
@@ -73,7 +76,7 @@ sendBroadcast(Intent("com.test.ACTION_RECEIVER").apply {
 
 之后就会发现这个`BroadcastReceiver`并没有被启动。
 
-## Activity的隐式启动
+## Activity 的隐式启动
 
 首先，在`AndroidManifest`中注册我们的`Activity`及其`intent-filter`:
 
@@ -101,7 +104,7 @@ startActivity(Intent("com.test.ACTION_ACTIVITY").apply {
 
 既然问题已经暴露，我们就要尽量查出问题产生的根本原因，而不是仅仅找个规避方案了事。经过一番代码跟踪之后，我发现这个问题在`BroadcastReceiver`和`Activity`中的表现是一致的，连原因也是同一个，那么我下面就用`BroadcastReceiver`举例，说一下这个问题的根本原因。
 
-## 1. BroadcastReceiver的分发
+## 1. BroadcastReceiver 的分发
 
 众所周知，`BroadcastReceiver`的分发也是由`framework`中的`AMS`来处理的，就是它：`frameworks/base/services/core/java/com/android/server/am/ActivityManagerService.java`。经过一番调查之后，发现`AMS`收到一个`BroadcastReceiver`请求的时候，会通过它的成员变量`mReceiverResolver`来查找哪些`BroadcastReceiver`可以处理这个`Intent`。
 
@@ -120,9 +123,9 @@ startActivity(Intent("com.test.ACTION_ACTIVITY").apply {
 
 下面我们就要分析这个`mReceiverResolver`是如何工作的。
 
-## 2. IntentResolver查找对应的BroadcastReceiver
+## 2. IntentResolver 查找对应的 BroadcastReceiver
 
-`AMS`通过`IntentResolver`的`queryIntent`来查找Intent对应的那些`BroadcastReceiver`。这个方法的定义大致如下：
+`AMS`通过`IntentResolver`的`queryIntent`来查找 Intent 对应的那些`BroadcastReceiver`。这个方法的定义大致如下：
 
 ```java
     public List<R> queryIntent(Intent intent, String resolvedType, boolean defaultOnly,
@@ -176,7 +179,7 @@ public List<R> queryIntent(Intent intent, String resolvedType, boolean defaultOn
 
 # 总结
 
-当我们使用的`Intent`去隐式启动`BroadcastReceiver`或者 `Activity`，如果`Intent`里既有`Action`，又有`Uri`。我们需要在组件的`intent-filter`显式声明我们能够捕获该`Uri`的`scheme`。类似`https://m.lstec.org`的uri，需要在`AndroidManifest.xml` 中用如下的方式声明：
+当我们使用的`Intent`去隐式启动`BroadcastReceiver`或者 `Activity`，如果`Intent`里既有`Action`，又有`Uri`。我们需要在组件的`intent-filter`显式声明我们能够捕获该`Uri`的`scheme`。类似`https://m.lstec.org`的 uri，需要在`AndroidManifest.xml` 中用如下的方式声明：
 
 ```xml
 <intent-filter>

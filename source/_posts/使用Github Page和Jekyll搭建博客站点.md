@@ -14,6 +14,8 @@ tags:
 
 [这里](https://pages.github.com/)
 
+<!-- more -->
+
 ## 2.把新建的 pages 工程 pull 到本地
 
 ```shell
