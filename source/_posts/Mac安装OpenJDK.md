@@ -50,7 +50,7 @@ $ brew install --cask adoptopenjdk
    brew install --cask adoptopenjdk14
    ```
 
-   至于可用的版本号，可以查询官方文档。或者使用`brew search adoptopenjdk`来检索。
+   至于可用的版本号，可以查询[官方文档](https://github.com/AdoptOpenJDK/homebrew-openjdk#available-versions)。或者使用`brew search adoptopenjdk`来检索。
 
 #### 3. 管理多个版本
 
