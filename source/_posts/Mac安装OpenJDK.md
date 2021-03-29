@@ -1,5 +1,5 @@
 ---
-title: Mac安装OpenJDK
+title: Mac 安装 OpenJDK
 date: 2021-03-08 12:03:27
 tags:
 	- macOS
@@ -40,13 +40,13 @@ $ brew install --cask adoptopenjdk
 
    这样，我们就可以用`brew`来安装`AdoptOpenJDK`库下的`OpenJDK`的任意版本了。
 
-   ```
+   ```plain
    brew tap AdoptOpenJDK/openjdk
    ```
 
 2. 安装自己需要的`JDK`
 
-   ```
+   ```plain
    brew install --cask adoptopenjdk14
    ```
 

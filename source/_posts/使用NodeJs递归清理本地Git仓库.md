@@ -1,5 +1,5 @@
 ---
-title: 使用NodeJs递归清理本地Git仓库
+title: 使用 NodeJs 递归清理本地 Git 仓库
 date: 2019-01-19 19:05:32 +0800
 categories:
   - 网络日志
@@ -25,7 +25,7 @@ tags:
 
 ## 背景
 
-由于常年混迹`Github`，所以在我电脑上有很多 clone 下的`Git Repo`，而这些 repo 使用中生成的临时文件占用了大量空间。粗略看了下空间占用，居然有`23G`。所以决定通过`git clean`命令把每一个仓库清理一下。但是先进入每一个仓库，然后执行上面的命令就太 low 了，于是决定写个脚本处理一下。最近 nodejs 用的多一些，因此决定用 nodejs 来处理这件事。
+由于常年混迹`Github`，所以在我电脑上有很多 clone 下的`Git Repo`，而这些 repo 使用中生成的临时文件占用了大量空间。粗略看了下空间占用，居然有`23G`。所以决定通过`git clean`命令把每一个仓库清理一下。但是先进入每一个仓库，然后执行上面的命令就太 low 了，于是决定写个脚本处理一下。最近 nodejs 用的多一些，因此决定用 nodejs 来处理这件事。
 
 <!-- more -->
 
@@ -49,17 +49,17 @@ tags:
 
 ### 工具
 
-- `NodeJs`中的`child_process`。用于在 js 中执行`unix`系统的命令行程序
-- `NodeJs`中的`path`。用于处理路径
+- `NodeJs`中的`child_process`。用于在 js 中执行`unix`系统的命令行程序
+- `NodeJs`中的`path`。用于处理路径
 - `find`命令。用于查找文件位置
 - `cd`命令。用于切换执行`unix`命令的目录位置
-- `git`命令。 用于执行`git clean`命令
+- `git`命令。 用于执行`git clean`命令
 
 ### 步骤
 
 #### 1.找出所有`.git`文件夹的位置
 
-通过`child_process`， 执行`find . -type d -name .git`命令，。
+通过`child_process`， 执行`find . -type d -name .git`命令，。
 
 ```javascript
 const process = require("child_process");

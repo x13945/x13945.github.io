@@ -1,5 +1,5 @@
 ---
-title: Android+Gradle+Jenkins持续集成
+title: Android+Gradle+Jenkins 持续集成
 tags:
   - Android
   - Gradle

@@ -1,5 +1,5 @@
 ---
-title: 使用Github Page和Jekyll搭建博客站点
+title: 使用 Github Page 和 Jekyll 搭建博客站点
 date: 2017-01-04 19:34:32 +0800
 categories:
   - 网络日志
@@ -50,7 +50,7 @@ bundle exec jekyll serve
 
 按照`Gemfile`中的描述
 
-```
+```plain
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and
 # uncomment the line below. To upgrade, run `bundle update github-pages`.
 ```
@@ -66,7 +66,7 @@ bundle exec jekyll serve
 我们可以在`_posts`目录下新建一个 md 文件,注意文件名的格式是:yyyy-mm-dd-博客-名字.md.当然也可以参考`_posts`目录下的那个初始例子文件,一般叫做`welcome-to-jekyll.markdown`.
 然后记得在 md 文件的开头处加入类型下面的东东,
 
-```
+```plain
 ---
 layout: post
 title:  "2016年终总结"

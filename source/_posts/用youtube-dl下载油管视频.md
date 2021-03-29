@@ -1,5 +1,5 @@
 ---
-title: 用youtube-dl下载油管视频
+title: 用 youtube-dl 下载油管视频
 date: 2021-02-18 11:03:39
 categories:
   - 网络日志
@@ -11,7 +11,7 @@ tags:
 
 ## 简介
 
-youtube-dl 是一个用python开发的命令行工具，可以用来下载油管上的视频。
+youtube-dl 是一个用 python 开发的命令行工具，可以用来下载油管上的视频。
 
 <!-- more -->
 
@@ -52,7 +52,7 @@ youtube-dl -f 137 https://www.youtube.com/playlist\?list\=PL54herq3DAICshHvaJlpZ
 
 ### 1. 文件重命名
 
-youtube-dl 可以对下载的文件重命名。规则遵循Python的[字符串格式化规则](https://docs.python.org/2/library/stdtypes.html#string-formatting)，其中可以使用的变量可以参见youtube-dl的文档：[youtube-dl/README.md at master · ytdl-org/youtube-dl · GitHub](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#output-template)。
+youtube-dl 可以对下载的文件重命名。规则遵循 Python 的[字符串格式化规则](https://docs.python.org/2/library/stdtypes.html#string-formatting)，其中可以使用的变量可以参见 youtube-dl 的文档：[youtube-dl/README.md at master · ytdl-org/youtube-dl · GitHub](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#output-template)。
 
 例如：
 

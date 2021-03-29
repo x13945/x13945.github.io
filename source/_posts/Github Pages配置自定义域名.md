@@ -1,5 +1,5 @@
 ---
-title: Github Pages配置自定义域名
+title: Github Pages 配置自定义域名
 date: 2017-06-24 19:34:32 +0800
 categories:
   - 网络日志
@@ -22,13 +22,13 @@ tags:
 
 1. 手动在 pages 项目的根目录下新建`CNAME`文件，并添加如下内容：
 
-```
+```plain
 lstec.org
 ```
 
 由于我把 pages 放在我的二级域名下了，所以`CNAME`文件的内容就是：
 
-```
+```plain
 blog.lstec.org
 ```
 

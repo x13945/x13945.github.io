@@ -1,5 +1,5 @@
 ---
-title: Ubuntu+Win10双系统硬盘安装Kali linux
+title: Ubuntu+Win10 双系统硬盘安装 Kali linux
 date: 2016-01-17 00:17:44
 categories:
   - 网络日志

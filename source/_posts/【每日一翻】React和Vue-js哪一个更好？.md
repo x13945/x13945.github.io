@@ -1,5 +1,5 @@
 ---
-title: 【每日一翻】React和Vue.js2.0哪一个更好？
+title: 【每日一翻】React 和 Vue.js2.0 哪一个更好？
 date: 2019-08-15 17:30:20
 categories:
   - 每日一翻
