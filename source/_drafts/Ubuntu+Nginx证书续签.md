@@ -23,18 +23,18 @@ nginx -s quit
 ### 2. 生成证书
 
 ```plain
-acme.sh --issue --standalone -d lstec.org -d happy.lstec.org -d pan.lstec.org -d l2d.lstec.org -d l2y.lstec.org -d tj.lstec.org --force
+acme.sh --issue --standalone -d lstec.org -d happy.lstec.org -d pan.lstec.org -d l2d.lstec.org -d l2y.lstec.org -d tj.lstec.org -d tjx.lstec.org -d download.lstec.org --force
 ```
 
 ### 3. 安装证书
 
 ```plain
-acme.sh  --installcert -d lstec.org -d happy.lstec.org -d pan.lstec.org -d l2d.lstec.org -d l2y.lstec.org -d tj.lstec.org  --key-file /etc/nginx/ssl/lstec.org.key --fullchain-file /etc/nginx/ssl/fullchain.cer --reloadcmd  "service nginx force-reload"
+acme.sh  --installcert -d lstec.org -d happy.lstec.org -d pan.lstec.org -d l2d.lstec.org -d l2y.lstec.org -d tj.lstec.org -d tjx.lstec.org -d download.lstec.org --key-file /etc/nginx/ssl/lstec.org.key --fullchain-file /etc/nginx/ssl/fullchain.cer --reloadcmd  "service nginx force-reload"
 ```
 
 ### 4. 重启服务
 
 ```plain
-sudo service nginx restart
+service nginx restart
 ```
 
